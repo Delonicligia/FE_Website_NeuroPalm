@@ -168,7 +168,7 @@ export default function Riwayat() {
 
       <div className="flex-1 flex flex-col justify-start items-start overflow-x-hidden">
         {/* Top Navbar */}
-        <div className="self-stretch px-8 py-5 bg-white border-b border-slate-100 flex justify-between items-center shadow-sm">
+        <div className="self-stretch pl-16 pr-8 py-5 bg-white border-b border-slate-100 flex justify-between items-center shadow-sm md:px-8">
           <div className="flex justify-start items-center gap-3">
             <div className="w-2.5 h-6 bg-emerald-800 rounded-full" />
             <h1 className="text-black text-xl font-bold font-['Inter'] leading-7">Riwayat Klasifikasi Sawit</h1>

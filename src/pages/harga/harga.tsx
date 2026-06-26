@@ -148,7 +148,7 @@ export default function Harga() {
 
       <div className="flex-1 flex flex-col justify-start items-start overflow-x-hidden">
         {/* Top Navbar */}
-        <div className="self-stretch px-8 py-5 bg-white border-b border-slate-100 flex justify-between items-center shadow-sm">
+        <div className="self-stretch pl-16 pr-8 py-5 bg-white border-b border-slate-100 flex justify-between items-center shadow-sm md:px-8">
           <div className="flex justify-start items-center gap-2 cursor-pointer" onClick={() => navigate('/dashboard')}>
             <svg className="w-5 h-5 text-emerald-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -249,7 +249,7 @@ export default function Harga() {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   type="submit"
                   disabled={loading}
