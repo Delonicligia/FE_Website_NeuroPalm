@@ -93,7 +93,7 @@ export default function Users() {
         <div className="self-stretch pl-16 pr-4 py-5 bg-white border-b border-slate-100 flex justify-between items-center shadow-sm md:px-8">
           <div className="flex justify-start items-center gap-3 min-w-0">
             <div className="w-2.5 h-6 bg-emerald-800 rounded-full shrink-0" />
-            <h1 className="text-black text-sm sm:text-base md:text-xl font-bold font-['Inter'] leading-7 truncate">Manajemen Pengguna</h1>
+            <h1 className="text-black text-sm sm:text-base md:text-xl font-bold font-['Inter'] leading-tight py-1">Manajemen Pengguna</h1>
           </div>
           <button
             onClick={fetchUsers}
