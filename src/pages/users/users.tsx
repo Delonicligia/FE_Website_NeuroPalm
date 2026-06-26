@@ -90,36 +90,36 @@ export default function Users() {
 
       <div className="flex-1 flex flex-col justify-start items-start overflow-x-hidden">
         {/* Top Navbar */}
-        <div className="self-stretch pl-16 pr-8 py-5 bg-white border-b border-slate-100 flex justify-between items-center shadow-sm md:px-8">
-          <div className="flex justify-start items-center gap-3">
-            <div className="w-2.5 h-6 bg-emerald-800 rounded-full" />
-            <h1 className="text-black text-xl font-bold font-['Inter'] leading-7">Manajemen Pengguna</h1>
+        <div className="self-stretch pl-16 pr-4 py-5 bg-white border-b border-slate-100 flex justify-between items-center shadow-sm md:px-8">
+          <div className="flex justify-start items-center gap-3 min-w-0">
+            <div className="w-2.5 h-6 bg-emerald-800 rounded-full shrink-0" />
+            <h1 className="text-black text-sm sm:text-base md:text-xl font-bold font-['Inter'] leading-7 truncate">Manajemen Pengguna</h1>
           </div>
           <button
             onClick={fetchUsers}
-            className="p-2 bg-emerald-50 text-emerald-800 rounded-lg text-sm font-semibold hover:bg-emerald-100 flex items-center gap-2 transition cursor-pointer"
+            className="px-2.5 py-2 sm:p-2 bg-emerald-50 text-emerald-800 rounded-lg text-xs sm:text-sm font-semibold hover:bg-emerald-100 flex items-center gap-1.5 sm:gap-2 transition cursor-pointer shrink-0"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 8H17" />
             </svg>
-            <span>Segarkan</span>
+            <span className="hidden sm:inline">Segarkan</span>
           </button>
         </div>
 
         {/* Content Container */}
-        <div className="w-full max-w-6xl mx-auto p-6 md:p-8 flex flex-col gap-8">
+        <div className="w-full max-w-6xl mx-auto p-4 sm:p-6 md:p-8 flex flex-col gap-6 sm:gap-8">
           {/* Header Summary */}
           <div>
-            <h2 className="text-black text-2xl font-black font-['Inter']">
+            <h2 className="text-black text-xl sm:text-2xl font-black font-['Inter']">
               <span className="text-black">Daftar Akun Pengguna</span>
             </h2>
-            <p className="text-black text-sm mt-1">
+            <p className="text-black text-xs sm:text-sm mt-1">
               Kelola peran pengguna dan otorisasi akses ke platform NeuroPalm.
             </p>
           </div>
 
           {/* Filter Controls */}
-          <div className="w-full p-6 bg-white border border-slate-100 rounded-2xl shadow-sm grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+          <div className="w-full p-4 sm:p-6 bg-white border border-slate-100 rounded-2xl shadow-sm grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
             <div className="flex flex-col gap-1.5">
               <label className="text-neutral-700 text-xs font-bold uppercase tracking-wider">Pencarian</label>
               <input
@@ -189,29 +189,29 @@ export default function Users() {
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-slate-50 border-b border-slate-100 text-neutral-500 text-xs font-bold uppercase tracking-wider">
-                      <th className="px-6 py-4">ID</th>
-                      <th className="px-6 py-4">Nama Pengguna</th>
-                      <th className="px-6 py-4">Email</th>
-                      <th className="px-6 py-4">Peran (Role)</th>
-                      <th className="px-6 py-4">Tanggal Daftar</th>
-                      <th className="px-6 py-4 text-center">Aksi</th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">ID</th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">Nama Pengguna</th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">Email</th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">Peran (Role)</th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">Tanggal Daftar</th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4 text-center">Aksi</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100 text-sm text-slate-900">
                     {filteredUsers.map((user) => (
                       <tr key={user.id} className="hover:bg-slate-50/50 transition">
-                        <td className="px-6 py-4 font-mono text-xs text-neutral-600">
+                        <td className="px-3 py-3 sm:px-6 sm:py-4 font-mono text-xs text-neutral-600">
                           #{user.id}
                         </td>
-                        <td className="px-6 py-4 font-bold">
+                        <td className="px-3 py-3 sm:px-6 sm:py-4 font-bold text-xs sm:text-sm">
                           {user.username}
                         </td>
-                        <td className="px-6 py-4">
+                        <td className="px-3 py-3 sm:px-6 sm:py-4 text-xs sm:text-sm">
                           {user.email}
                         </td>
-                        <td className="px-6 py-4">
+                        <td className="px-3 py-3 sm:px-6 sm:py-4">
                           <span
-                            className={`px-2.5 py-1 text-[10px] font-black border rounded-full uppercase tracking-wider ${
+                            className={`px-2 py-0.5 sm:px-2.5 sm:py-1 text-[9px] sm:text-[10px] font-black border rounded-full uppercase tracking-wider ${
                               user.role === 'admin'
                                 ? 'bg-emerald-100 text-emerald-800 border-emerald-200'
                                 : 'bg-blue-100 text-blue-800 border-blue-200'
@@ -220,13 +220,13 @@ export default function Users() {
                             {user.role}
                           </span>
                         </td>
-                        <td className="px-6 py-4 text-neutral-500">
+                        <td className="px-3 py-3 sm:px-6 sm:py-4 text-xs sm:text-sm text-neutral-500">
                           {formatDate(user.created_at)}
                         </td>
-                        <td className="px-6 py-4 text-center">
+                        <td className="px-3 py-3 sm:px-6 sm:py-4 text-center">
                           <button
                             onClick={() => handleRoleChange(user.id, user.role)}
-                            className="px-3.5 py-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 rounded-xl text-xs font-bold transition cursor-pointer"
+                            className="px-2.5 py-1.5 sm:px-3.5 sm:py-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 rounded-xl text-[10px] sm:text-xs font-bold transition cursor-pointer whitespace-nowrap"
                           >
                             Ubah ke {user.role === 'admin' ? 'Petani' : 'Admin'}
                           </button>

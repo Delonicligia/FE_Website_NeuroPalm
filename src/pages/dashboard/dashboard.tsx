@@ -90,37 +90,37 @@ export default function Dashboard() {
       
       <div className="flex-1 flex flex-col justify-start items-start overflow-x-hidden">
         {/* Top Navbar */}
-        <div className="self-stretch pl-16 pr-8 py-5 bg-white border-b border-slate-100 flex justify-between items-center shadow-sm md:px-8">
-          <div className="flex justify-start items-center gap-3">
-            <div className="w-2.5 h-6 bg-emerald-800 rounded-full" />
-            <div className="text-black text-xl font-bold font-['Inter'] leading-7">NeuroPalm Admin Portal</div>
+        <div className="self-stretch pl-16 pr-4 py-5 bg-white border-b border-slate-100 flex justify-between items-center shadow-sm md:px-8">
+          <div className="flex justify-start items-center gap-3 min-w-0">
+            <div className="w-2.5 h-6 bg-emerald-800 rounded-full shrink-0" />
+            <div className="text-black text-sm sm:text-base md:text-xl font-bold font-['Inter'] leading-7 truncate">NeuroPalm Admin Portal</div>
           </div>
-          <div className="flex justify-start items-center gap-4">
+          <div className="flex justify-start items-center gap-2 shrink-0">
             <div className="w-2 h-2 bg-emerald-500 rounded-full animate-ping" />
-            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Sistem Aktif</span>
+            <span className="text-[10px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wider">Sistem Aktif</span>
           </div>
         </div>
 
         {/* Dashboard Content Container */}
-        <div className="w-full max-w-6xl mx-auto p-6 md:p-8 flex flex-col justify-start items-start gap-8">
+        <div className="w-full max-w-6xl mx-auto p-4 sm:p-6 md:p-8 flex flex-col justify-start items-start gap-6 sm:gap-8">
           
           {/* Header Section */}
           <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 w-full md:w-auto">
               <div className="text-emerald-800 text-xs font-bold font-['Inter'] uppercase leading-4 tracking-wider">
                 UPDATE HARIAN
               </div>
-              <h1 className="text-black text-3xl md:text-4xl font-extrabold font-['Inter'] tracking-tight">
+              <h1 className="text-black text-2xl sm:text-3xl md:text-4xl font-extrabold font-['Inter'] tracking-tight">
                 Manajemen Harga
               </h1>
-              <p className="text-neutral-500 text-sm md:text-base max-w-xl">
+              <p className="text-neutral-500 text-xs sm:text-sm md:text-base max-w-xl">
                 Pantau dan kelola pembaruan harga Tandan Buah Segar (TBS) secara real-time untuk wilayah Sijunjung dan sekitarnya.
               </p>
             </div>
             
             <button
               onClick={() => navigate('/harga')}
-              className="px-6 py-3.5 bg-gradient-to-b from-emerald-800 to-emerald-900 hover:from-emerald-700 hover:to-emerald-800 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 flex items-center gap-3 cursor-pointer"
+              className="w-full md:w-auto px-5 py-3 bg-gradient-to-b from-emerald-800 to-emerald-900 hover:from-emerald-700 hover:to-emerald-800 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-3 cursor-pointer text-sm"
             >
               <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -130,46 +130,46 @@ export default function Dashboard() {
           </div>
 
           {/* Cards Metrics Summary */}
-          <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
             {/* Metric 1 */}
-            <div className="p-6 bg-white border border-emerald-100 rounded-2xl flex flex-col gap-4 shadow-sm hover:shadow-md transition duration-200">
+            <div className="p-4 sm:p-6 bg-white border border-emerald-100 rounded-2xl flex flex-col gap-3 sm:gap-4 shadow-sm hover:shadow-md transition duration-200">
               <div className="flex justify-between items-center">
-                <span className="text-neutral-500 text-xs font-bold uppercase tracking-wider">RATA-RATA HARGA</span>
-                <div className="p-2 bg-emerald-50 rounded-lg text-emerald-800 font-bold">Rp</div>
+                <span className="text-neutral-500 text-[10px] sm:text-xs font-bold uppercase tracking-wider">RATA-RATA HARGA</span>
+                <div className="px-2 py-0.5 bg-emerald-50 rounded text-emerald-800 font-bold text-xs">Rp</div>
               </div>
               <div>
-                <span className="text-slate-900 text-3xl font-black font-['Inter'] leading-9">
+                <span className="text-slate-900 text-xl sm:text-2xl md:text-3xl font-black font-['Inter'] leading-9">
                   {formatRupiah(averagePrice)}
                 </span>
-                <span className="text-neutral-500 text-sm font-normal ml-1">/kg</span>
+                <span className="text-neutral-500 text-xs sm:text-sm font-normal ml-1">/kg</span>
               </div>
             </div>
 
             {/* Metric 2 */}
-            <div className="p-6 bg-white border border-emerald-100 rounded-2xl flex flex-col gap-4 shadow-sm hover:shadow-md transition duration-200">
+            <div className="p-4 sm:p-6 bg-white border border-emerald-100 rounded-2xl flex flex-col gap-3 sm:gap-4 shadow-sm hover:shadow-md transition duration-200">
               <div className="flex justify-between items-center">
-                <span className="text-neutral-500 text-xs font-bold uppercase tracking-wider">TOTAL ENTRI</span>
-                <svg className="w-5 h-5 text-emerald-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span className="text-neutral-500 text-[10px] sm:text-xs font-bold uppercase tracking-wider">TOTAL ENTRI</span>
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
               <div>
-                <span className="text-slate-900 text-3xl font-black font-['Inter'] leading-9">
+                <span className="text-slate-900 text-xl sm:text-2xl md:text-3xl font-black font-['Inter'] leading-9">
                   {prices.length} Lokasi
                 </span>
               </div>
             </div>
 
             {/* Metric 3 */}
-            <div className="p-6 bg-white border border-emerald-100 rounded-2xl flex flex-col gap-4 shadow-sm hover:shadow-md transition duration-200">
+            <div className="p-4 sm:p-6 bg-white border border-emerald-100 rounded-2xl flex flex-col gap-3 sm:gap-4 shadow-sm hover:shadow-md transition duration-200 sm:col-span-2 md:col-span-1">
               <div className="flex justify-between items-center">
-                <span className="text-neutral-500 text-xs font-bold uppercase tracking-wider">STATUS PASAR</span>
-                <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-ping" />
+                <span className="text-neutral-500 text-[10px] sm:text-xs font-bold uppercase tracking-wider">STATUS PASAR</span>
+                <span className="w-2 h-2 bg-emerald-500 rounded-full animate-ping" />
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-emerald-600 rounded-full" />
-                <span className="text-emerald-900 text-lg font-bold font-['Inter']">Stabil &amp; Aktif</span>
+                <div className="w-2.5 h-2.5 bg-emerald-600 rounded-full" />
+                <span className="text-emerald-900 text-base sm:text-lg font-bold font-['Inter']">Stabil &amp; Aktif</span>
               </div>
             </div>
           </div>
@@ -247,11 +247,11 @@ export default function Dashboard() {
                   return (
                     <div
                       key={price.id}
-                      className="w-full p-5 bg-white rounded-2xl border border-slate-100 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover:shadow-md transition duration-200"
+                      className="w-full p-4 sm:p-5 bg-white rounded-2xl border border-slate-100 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4 sm:gap-6 hover:shadow-md transition duration-200"
                     >
                       {/* Image representation / Visual Sample Placeholder */}
-                      <div className="flex items-center gap-5 w-full md:w-auto">
-                        <div className="w-24 h-20 bg-emerald-50 rounded-xl overflow-hidden shrink-0 flex justify-center items-center border border-emerald-100">
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full md:w-auto">
+                        <div className="w-full sm:w-24 h-32 sm:h-20 bg-emerald-50 rounded-xl overflow-hidden shrink-0 flex justify-center items-center border border-emerald-100">
                           {details.imagePath ? (
                             <img
                               src={
@@ -269,36 +269,36 @@ export default function Dashboard() {
                           )}
                         </div>
                         
-                        <div className="flex-1 min-w-0">
+                        <div className="flex-1 min-w-0 w-full">
                           <div className="flex items-center gap-2 mb-1 flex-wrap">
-                            <span className="px-2.5 py-0.5 bg-emerald-50 text-emerald-800 text-[10px] font-bold rounded uppercase tracking-wider">
+                            <span className="px-2.5 py-0.5 bg-emerald-50 text-emerald-800 text-[9px] sm:text-[10px] font-bold rounded uppercase tracking-wider">
                               {details.wilayah}
                             </span>
-                            <span className="px-2.5 py-0.5 bg-blue-50 text-blue-800 text-[10px] font-bold rounded uppercase tracking-wider">
+                            <span className="px-2.5 py-0.5 bg-blue-50 text-blue-800 text-[9px] sm:text-[10px] font-bold rounded uppercase tracking-wider">
                               {details.grade}
                             </span>
-                            <span className="text-neutral-400 text-xs flex flex-wrap gap-x-2">
+                            <span className="text-neutral-400 text-[10px] sm:text-xs flex flex-wrap gap-x-2">
                               <span>Dibuat: {dateCreated} WIB</span>
-                              <span>•</span>
+                              <span className="hidden sm:inline">•</span>
                               <span>Diperbarui: {dateUpdated} WIB</span>
                             </span>
                           </div>
-                          <h3 className="text-slate-900 text-lg font-bold leading-7 truncate">
+                          <h3 className="text-slate-900 text-base sm:text-lg font-bold leading-7 truncate">
                             {details.wilayah} - {details.grade}
                           </h3>
-                          <p className="text-neutral-500 text-xs md:text-sm truncate mt-1">
+                          <p className="text-neutral-500 text-xs truncate mt-1">
                             {details.info || 'Entri informasi harga kelapa sawit TBS wilayah Sijunjung.'}
                           </p>
                         </div>
                       </div>
 
                       {/* Pricing Info & Actions */}
-                      <div className="flex items-center justify-between md:justify-end gap-6 w-full md:w-auto border-t md:border-t-0 md:border-l border-slate-100 pt-4 md:pt-0 md:pl-6">
+                      <div className="flex items-center justify-between md:justify-end gap-4 w-full md:w-auto border-t md:border-t-0 md:border-l border-slate-100 pt-3 md:pt-0 md:pl-6">
                         <div className="text-left md:text-right">
-                          <span className="block text-neutral-400 text-[10px] font-bold uppercase tracking-wider">HARGA TBS</span>
-                          <span className="text-emerald-900 text-2xl font-black font-['Inter']">
+                          <span className="block text-neutral-400 text-[9px] font-bold uppercase tracking-wider">HARGA TBS</span>
+                          <span className="text-emerald-900 text-xl sm:text-2xl font-black font-['Inter']">
                             {formatRupiah(price.harga_perkg)}
-                            <span className="text-neutral-500 text-xs font-normal ml-0.5">/kg</span>
+                            <span className="text-neutral-500 text-[10px] sm:text-xs font-normal ml-0.5">/kg</span>
                           </span>
                         </div>
 

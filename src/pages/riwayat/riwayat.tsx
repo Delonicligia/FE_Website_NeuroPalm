@@ -168,60 +168,59 @@ export default function Riwayat() {
 
       <div className="flex-1 flex flex-col justify-start items-start overflow-x-hidden">
         {/* Top Navbar */}
-        <div className="self-stretch pl-16 pr-8 py-5 bg-white border-b border-slate-100 flex justify-between items-center shadow-sm md:px-8">
-          <div className="flex justify-start items-center gap-3">
-            <div className="w-2.5 h-6 bg-emerald-800 rounded-full" />
-            <h1 className="text-black text-xl font-bold font-['Inter'] leading-7">Riwayat Klasifikasi Sawit</h1>
+        <div className="self-stretch pl-16 pr-4 py-5 bg-white border-b border-slate-100 flex justify-between items-center shadow-sm md:px-8">
+          <div className="flex justify-start items-center gap-3 min-w-0">
+            <div className="w-2.5 h-6 bg-emerald-800 rounded-full shrink-0" />
+            <h1 className="text-black text-sm sm:text-base md:text-xl font-bold font-['Inter'] leading-7 truncate">Riwayat Klasifikasi Sawit</h1>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <button
               onClick={exportToPDF}
-              className="px-4 py-2 bg-rose-50 hover:bg-rose-100 text-rose-800 rounded-lg text-sm font-semibold flex items-center gap-2 transition cursor-pointer"
+              className="px-2.5 py-2 sm:px-4 sm:py-2 bg-rose-50 hover:bg-rose-100 text-rose-800 rounded-lg text-xs sm:text-sm font-semibold flex items-center gap-1.5 sm:gap-2 transition cursor-pointer"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
-              <span>Ekspor PDF</span>
+              <span className="hidden sm:inline">Ekspor PDF</span>
             </button>
             <button 
               onClick={fetchLogs}
-              className="px-4 py-2 bg-emerald-50 text-emerald-800 rounded-lg text-sm font-semibold hover:bg-emerald-100 flex items-center gap-2 transition cursor-pointer"
+              className="px-2.5 py-2 sm:px-4 sm:py-2 bg-emerald-50 text-emerald-800 rounded-lg text-xs sm:text-sm font-semibold hover:bg-emerald-100 flex items-center gap-1.5 sm:gap-2 transition cursor-pointer"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 8H17" />
               </svg>
-              <span>Segarkan</span>
+              <span className="hidden sm:inline">Segarkan</span>
             </button>
           </div>
         </div>
 
         {/* Content Container */}
-        <div className="w-full max-w-6xl mx-auto p-6 md:p-8 flex flex-col gap-8">
+        <div className="w-full max-w-6xl mx-auto p-4 sm:p-6 md:p-8 flex flex-col gap-6 sm:gap-8">
           
           {/* Header Summary Section */}
-          <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+          <div className="w-full flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
-              
-              <h2 className="text-black text-2xl font-black font-['Inter']"><span className='text-black'>Log Audit Klasifikasi</span></h2>
-              <p className="text-black text-sm mt-1">Daftar historis hasil deteksi tingkat kematangan buah kelapa sawit oleh AI.</p>
+              <h2 className="text-black text-xl sm:text-2xl font-black font-['Inter']"><span className='text-black'>Log Audit Klasifikasi</span></h2>
+              <p className="text-black text-xs sm:text-sm mt-1">Daftar historis hasil deteksi tingkat kematangan buah kelapa sawit oleh AI.</p>
             </div>
 
             {/* Metrics Widget */}
-            <div className="bg-white p-4 rounded-2xl border border-emerald-100 shadow-sm flex items-center gap-4 shrink-0">
-              <div className="w-12 h-12 bg-emerald-50 rounded-xl flex justify-center items-center text-emerald-800">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-emerald-100 shadow-sm flex items-center gap-3 sm:gap-4 shrink-0 w-full sm:w-auto">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-emerald-50 rounded-xl flex justify-center items-center text-emerald-800 shrink-0">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
               <div>
-                <span className="block text-neutral-400 text-[10px] font-bold uppercase tracking-wider">AKURASI RERATA</span>
-                <span className="text-slate-900 text-xl font-black font-['Inter']">{averageAccuracy}%</span>
+                <span className="block text-neutral-400 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider">AKURASI RERATA</span>
+                <span className="text-slate-900 text-lg sm:text-xl font-black font-['Inter']">{averageAccuracy}%</span>
               </div>
             </div>
           </div>
 
           {/* Filter Controls Row */}
-          <div className="w-full p-6 bg-white border border-slate-100 rounded-2xl shadow-sm grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+          <div className="w-full p-4 sm:p-6 bg-white border border-slate-100 rounded-2xl shadow-sm grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
             {/* Search filter */}
             <div className="flex flex-col gap-1.5">
               <label className="text-neutral-700 text-xs font-bold uppercase tracking-wider">Cari Operator</label>
@@ -310,13 +309,13 @@ export default function Riwayat() {
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-slate-50 border-b border-slate-100 text-neutral-500 text-xs font-bold uppercase tracking-wider">
-                      <th className="px-6 py-4">Gambar</th>
-                      <th className="px-6 py-4">Tanggal / Waktu</th>
-                      <th className="px-6 py-4">Lokasi / Blok</th>
-                      <th className="px-6 py-4">Hasil Klasifikasi</th>
-                      <th className="px-6 py-4">Skor Kepercayaan</th>
-                      <th className="px-6 py-4">Operator</th>
-                      <th className="px-6 py-4 text-center">Aksi</th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">Gambar</th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">Tanggal / Waktu</th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">Lokasi / Blok</th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">Hasil Klasifikasi</th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">Skor Kepercayaan</th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4">Operator</th>
+                      <th className="px-3 py-3 sm:px-6 sm:py-4 text-center">Aksi</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100 text-sm text-slate-900">
@@ -324,7 +323,7 @@ export default function Riwayat() {
                       const dt = formatDate(log.created_at);
                       return (
                         <tr key={log.id} className="hover:bg-slate-50/50 transition">
-                          <td className="px-6 py-4 shrink-0">
+                          <td className="px-3 py-3 sm:px-6 sm:py-4 shrink-0">
                             <div className="w-14 h-12 bg-slate-100 rounded-lg overflow-hidden border border-slate-200/50 flex justify-center items-center">
                               {log.gambar_sawit ? (
                                 <img
@@ -343,39 +342,39 @@ export default function Riwayat() {
                               )}
                             </div>
                           </td>
-                          <td className="px-6 py-4">
-                            <span className="block font-bold">{dt.date}</span>
-                            <span className="text-xs text-neutral-500">{dt.time}</span>
+                          <td className="px-3 py-3 sm:px-6 sm:py-4">
+                            <span className="block font-bold text-xs sm:text-sm">{dt.date}</span>
+                            <span className="text-[10px] sm:text-xs text-neutral-500">{dt.time}</span>
                           </td>
-                          <td className="px-6 py-4 font-medium">
+                          <td className="px-3 py-3 sm:px-6 sm:py-4 font-medium text-xs sm:text-sm">
                             {log.warna_dominan?.includes('Blok') ? log.warna_dominan : `Blok ${log.sawit_id || 'Alpha'}`}
                           </td>
-                          <td className="px-6 py-4">
-                            <span className={`px-2.5 py-1 text-[10px] font-black border rounded-full uppercase tracking-wider ${getStatusBadgeClass(log.tingkat_kematangan)}`}>
+                          <td className="px-3 py-3 sm:px-6 sm:py-4">
+                            <span className={`px-2 py-0.5 sm:px-2.5 sm:py-1 text-[9px] sm:text-[10px] font-black border rounded-full uppercase tracking-wider ${getStatusBadgeClass(log.tingkat_kematangan)}`}>
                               {log.tingkat_kematangan}
                             </span>
                           </td>
-                          <td className="px-6 py-4">
+                          <td className="px-3 py-3 sm:px-6 sm:py-4">
                             <div className="flex items-center gap-2">
-                              <div className="w-16 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                              <div className="w-12 sm:w-16 h-1.5 bg-slate-100 rounded-full overflow-hidden hidden xs:block">
                                 <div
                                   className="h-full bg-emerald-700"
                                   style={{ width: log.persentase || '0%' }}
                                 />
                               </div>
-                              <span className="font-bold text-xs">{log.persentase}</span>
+                              <span className="font-bold text-[11px] sm:text-xs">{log.persentase}</span>
                             </div>
                           </td>
-                          <td className="px-6 py-4 font-mono text-xs text-neutral-600">
+                          <td className="px-3 py-3 sm:px-6 sm:py-4 font-mono text-[10px] sm:text-xs text-neutral-600">
                             {log.username || 'Operator'}
                           </td>
-                          <td className="px-6 py-4 text-center">
+                          <td className="px-3 py-3 sm:px-6 sm:py-4 text-center">
                             <button
                               onClick={() => handleDelete(log.id)}
                               className="p-1.5 hover:bg-rose-50 text-rose-700 rounded-lg transition"
                               title="Hapus Log"
                             >
-                              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                               </svg>
                             </button>
