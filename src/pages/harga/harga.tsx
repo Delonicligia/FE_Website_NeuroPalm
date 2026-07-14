@@ -278,9 +278,9 @@ export default function Harga() {
                 {/* Image upload block */}
                 <div className="w-full aspect-square bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl overflow-hidden flex flex-col justify-center items-center relative group">
                   {imagePreview ? (
-                    <img src={imagePreview} alt="Preview" className="w-full h-full object-cover" />
+                    <img src={imagePreview} alt="Preview" className="w-full h-full object-cover" crossOrigin="anonymous" referrerPolicy="no-referrer" />
                   ) : existingImagePath ? (
-                    <img src={`${BASE_URL}/${existingImagePath}`} alt="Existing" className="w-full h-full object-cover" />
+                    <img src={`${BASE_URL}/${existingImagePath}`} alt="Existing" className="w-full h-full object-cover" crossOrigin="anonymous" referrerPolicy="no-referrer" />
                   ) : (
                     <div className="flex flex-col items-center gap-2 p-4 text-center">
                       <svg className="w-10 h-10 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -16,6 +16,19 @@ export default function Riwayat() {
   const [selectedStatus, setSelectedStatus] = useState('Semua');
   const [searchQuery, setSearchQuery] = useState('');
 
+  // Pagination States
+  const itemsPerPage = 10;
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil(filteredLogs.length / itemsPerPage);
+  const paginatedLogs = filteredLogs.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [filteredLogs.length]);
+
   const fetchLogs = async () => {
     try {
       setLoading(true);
@@ -319,7 +332,7 @@ export default function Riwayat() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100 text-sm text-slate-900">
-                    {filteredLogs.map((log) => {
+                    {paginatedLogs.map((log) => {
                       const dt = formatDate(log.created_at);
                       return (
                         <tr key={log.id} className="hover:bg-slate-50/50 transition">
@@ -334,6 +347,8 @@ export default function Riwayat() {
                                   }
                                   alt="Sawit"
                                   className="w-full h-full object-cover"
+                                  crossOrigin="anonymous"
+                                  referrerPolicy="no-referrer"
                                 />
                               ) : (
                                 <svg className="w-5 h-5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -384,6 +399,83 @@ export default function Riwayat() {
                     })}
                   </tbody>
                 </table>
+              </div>
+            )}
+
+            {/* Pagination Controls */}
+            {!loading && !error && filteredLogs.length > 0 && totalPages > 1 && (
+              <div className="w-full border-t border-slate-100 p-4 bg-slate-50/50 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <span className="text-neutral-500 text-sm">
+                  Menampilkan <span className="font-bold text-slate-800">{((currentPage - 1) * itemsPerPage) + 1}</span> - <span className="font-bold text-slate-800">{Math.min(currentPage * itemsPerPage, filteredLogs.length)}</span> dari <span className="font-bold text-slate-800">{filteredLogs.length}</span> log
+                </span>
+                <div className="flex items-center gap-1">
+                  <button
+                    onClick={() => setCurrentPage(1)}
+                    disabled={currentPage === 1}
+                    className="p-2 border border-slate-200 rounded-lg hover:bg-slate-100 text-slate-600 bg-white disabled:opacity-40 disabled:hover:bg-transparent transition"
+                    title="Halaman Pertama"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                    disabled={currentPage === 1}
+                    className="p-2 border border-slate-200 rounded-lg hover:bg-slate-100 text-slate-600 bg-white disabled:opacity-40 disabled:hover:bg-transparent transition"
+                    title="Halaman Sebelumnya"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  
+                  {Array.from({ length: totalPages }, (_, i) => i + 1)
+                    .filter((p) => p === 1 || p === totalPages || Math.abs(p - currentPage) <= 1)
+                    .map((p, index, arr) => {
+                      const elements = [];
+                      if (index > 0 && p - arr[index - 1] > 1) {
+                        elements.push(
+                          <span key={`dots-${p}`} className="px-2 text-neutral-400">...</span>
+                        );
+                      }
+                      elements.push(
+                        <button
+                          key={p}
+                          onClick={() => setCurrentPage(p)}
+                          className={`px-3 py-1.5 rounded-lg text-sm font-bold transition ${
+                            currentPage === p
+                              ? 'bg-emerald-800 text-white'
+                              : 'border border-slate-200 text-slate-600 bg-white hover:bg-slate-100'
+                          }`}
+                        >
+                          {p}
+                        </button>
+                      );
+                      return elements;
+                    })}
+
+                  <button
+                    onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                    disabled={currentPage === totalPages}
+                    className="p-2 border border-slate-200 rounded-lg hover:bg-slate-100 text-slate-600 bg-white disabled:opacity-40 disabled:hover:bg-transparent transition"
+                    title="Halaman Berikutnya"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => setCurrentPage(totalPages)}
+                    disabled={currentPage === totalPages}
+                    className="p-2 border border-slate-200 rounded-lg hover:bg-slate-100 text-slate-600 bg-white disabled:opacity-40 disabled:hover:bg-transparent transition"
+                    title="Halaman Terakhir"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </div>
               </div>
             )}
           </div>
